@@ -7,7 +7,7 @@ class Game:
         self.board = [["_", "_", "_"], ["_", "_", "_"], ["_", "_", "_"]]
         self.player_symbol = "X"
         self.turn_counter = 0
-        self.play_game()
+
 
     def _horizontal_win_check(self, player_symbol):
         counter = 0
@@ -43,13 +43,12 @@ class Game:
     def _get_random_first_player(self):
         return random.choice(["X", "O"])
 
-    def _swap_player_turn(self, player):
-        return "X" if self.player_symbol == "O" else 'O'
+    def _swap_player_turn(self, player_symbol):
+        return "X" if player_symbol == "O" else 'O'
 
     def _validate_user_input(self, user_input):
         if user_input.isnumeric() and int(user_input) in range(1, 9):
             return True
-        return False
 
     def _get_row_and_col(self, user_input):
         row = (int(user_input) - 1) // 3
@@ -101,4 +100,4 @@ class Game:
 
 if __name__ == "__main__":
     game = Game()
-
+    game.play_game()
